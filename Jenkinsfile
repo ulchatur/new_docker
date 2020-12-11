@@ -3,6 +3,6 @@ pipeline {
     stages {
         stage('SCM Chockout'){
            steps{
-            git credentialsId: '987cf4ef-3c00-477c-89df-70f414d7ada6', url: 'https://github.com/ulchatur/new_docker.git'
+            git credentialsId: '275aba7a-43a1-44ab-bbd6-8f3bca7a3b35', url: 'https://github.com/ulchatur/new_docker.git'
             }
         }
