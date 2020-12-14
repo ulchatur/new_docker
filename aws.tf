@@ -1,7 +1,7 @@
 resource "aws_instance" "test-_instance"{
 
 ami="ami-0de53d8956e8dcf80"
-instance_type="t2.micro"
+instance_type="t2.medium"
 associate_public_ip_address = "true"
 subnet_id = "subnet-16dfeb28"
 vpc_security_group_ids = ["sg-0d4862aebf59f17f2"]
