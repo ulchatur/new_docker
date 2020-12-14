@@ -1,4 +1,3 @@
-<link href="/favicon.ico" type="image/x-icon" rel="icon" />
 var express = require('express');
 var app = express();
 
