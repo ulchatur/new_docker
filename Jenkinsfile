@@ -8,7 +8,7 @@ pipeline {
         }
         stage ('Deployment') {
             steps {
-                sh label: '', script: '''
+                sh label: '', script: '''docker --version
                 cd /var/lib/jenkins/workspace/docker_image
                 docker build -t nodejs .
                 docker run -itd -p 3000:3000 --name nodejs nodejs '''
@@ -16,8 +16,17 @@ pipeline {
         }
         stage ('Email') {
             steps {
-                emailext body: 'Hi', subject: 'test', to: 'ullasvardhan@gmail.com'
+                emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'ullasvardhan@gmail.com'
             }
+        }
+    }
+    post {
+        failure {
+            mail to: 'ullasvardhan@gmail.com',
+            subject: "pipeline status: ${currentBuild.fullDisplayName}",
+            body: "build ${env.BUILD_URL} is ${currentBuild.result}"
         }
     }
 }
