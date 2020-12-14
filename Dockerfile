@@ -1,4 +1,5 @@
 FROM node:12
+npm install serve-favicon
 WORKDIR /app
 ADD . /app
 RUN npm install
