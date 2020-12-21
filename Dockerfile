@@ -4,4 +4,4 @@ ADD . /app
 RUN npm install
 EXPOSE 3000
 ENTRYPOINT ["NODE"]
-CMD ["node.js"]
+CMD ["index.js"]
